@@ -1,29 +1,23 @@
 package com.company;
 
-import com.company.controller.ScoreBoard;
-import com.company.model.Balloon;
-import com.company.model.Clown;
-import com.company.model.SquareBalloon;
+import com.company.controller.ShoppingCart;
+import com.company.model.Product;
+import com.company.controller.PaypalAlgorithm;
+import com.company.controller.CreditCardAlgorithm;
 
 
 public class Main {
     public static void main(String[] args){
-        ScoreBoard scoreBoard=new ScoreBoard();
+        ShoppingCart cart=new ShoppingCart();
 
-        System.out.print("balloon Tap Score");
-        scoreBoard.algorithmBase=new Balloon();
-        scoreBoard.showScore(10, 5);
+        Product pants=new Product("213", 21);
+        Product shirt=new Product("543", 16);
 
-        System.out.print("Clown tap Score");
-        scoreBoard.algorithmBase=new Clown();
-        scoreBoard.showScore(10, 5);
+        cart.addProduct(pants);
+        cart.addProduct(shirt);
 
-
-        System.out.print("SquareBalloon score:");
-        scoreBoard.algorithmBase=new SquareBalloon();
-        scoreBoard.showScore(10, 5);
-
-
+        cart.pay(new PaypalAlgorithm("sanicksikani@gmail.com", "12324"));
+        cart.pay(new CreditCardAlgorithm("Paulo", "2134"));
     }
 
 }
